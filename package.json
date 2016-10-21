@@ -1,0 +1,76 @@
+{
+    "author": "toni@ac.upc.edu",
+    "dependencies": {
+        "pebble-clay": "^1.0.2"
+    },
+    "keywords": [],
+    "name": "typewriter",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "TypeWriter",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "BlueTooth",
+            "TextColor",
+            "BackGroundColor",
+            "ShowDate",
+            "Language"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/CoolTextScreenshoot",
+                    "name": "IMAGE_SCREENSHOOT",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/Bluetooth",
+                    "name": "IMAGE_NET",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/CoolTextLogo",
+                    "menuIcon": true,
+                    "name": "IMAGE_LOGO",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "characterRegex": "[\\-a-zA-Z0-9'?\\,]",
+                    "file": "fonts/SpecialElite.ttf",
+                    "name": "FONT_TW_15",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[\\-a-zA-Z0-9'?\\,]",
+                    "file": "fonts/SpecialElite.ttf",
+                    "name": "FONT_TW_19",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[\\-a-zA-Z0-9'?\\,]",
+                    "file": "fonts/SpecialElite.ttf",
+                    "name": "FONT_TW_27",
+                    "targetPlatforms": null,
+                    "type": "font"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "chalk"
+        ],
+        "uuid": "239a3e0f-20f7-4f58-97d1-c54b122c5fa0",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.0.0"
+}
