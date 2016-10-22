@@ -23,13 +23,13 @@ char *int2stringCat(int h, char* tmp_num, int opcio){
     case 14: strncpy(tmp_num, "catorze", 20); break;
     case 15: strncpy(tmp_num, "quinze", 20); break;
     case 16: strncpy(tmp_num, "setze", 20); break;
-    case 17: strncpy(tmp_num, "diset", 20); break;
-    case 18: strncpy(tmp_num, "divut", 20); break;
+    case 17: strncpy(tmp_num, "disset", 20); break;
+    case 18: strncpy(tmp_num, "divuit", 20); break;
     case 19: strncpy(tmp_num, "dinou", 20); break;
     case 20: if (opcio == 1) strncpy(tmp_num, "vint", 20); else strncpy(tmp_num, "vint-i-", 20); break;
-    case 30: strncpy(tmp_num, "trenta", 20); break;
-    case 40: strncpy(tmp_num, "quaranta", 20); break;
-    case 50: strncpy(tmp_num, "cincuanta", 20); break;
+    case 30: strncpy(tmp_num, "trenta-", 20); break;
+    case 40: strncpy(tmp_num, "quaranta-", 20); break;
+    case 50: strncpy(tmp_num, "cinquanta-", 20); break;
 
 
   }

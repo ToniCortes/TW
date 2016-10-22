@@ -25,7 +25,7 @@ char *int2stringEsp(int h, char* tmp_num, int opcio){
     case 17: strncpy(tmp_num, "siete", 20); break;
     case 18: strncpy(tmp_num, "ocho", 20); break;
     case 19: strncpy(tmp_num, "nueve", 20); break;
-    case 20: if (opcio == 1) strncpy(tmp_num, "veinte", 20); else strncpy(tmp_num, "veinti", 20); break;
+    case 20: if (opcio == 1) strncpy(tmp_num, "veinte", 20); else strncpy(tmp_num, "veinti-", 20); break;
     case 30: strncpy(tmp_num, "treinta", 20); break;
     case 40: strncpy(tmp_num, "cuarenta", 20); break;
     case 50: strncpy(tmp_num, "cincuenta", 20); break;
@@ -46,12 +46,12 @@ void date2textEsp(struct tm *tick_time, char *line1, char* line2, char *line3, c
         case 0: snprintf(line2, 20, " en punto "); break;
         default: snprintf(line2, 20, " y %s ", int2stringEsp(tick_time->tm_min, num, 1)); break;
        }break;
-    case 1: snprintf(line2, 20, " y %s ", int2stringEsp(tick_time->tm_min, num, 1)); 
-            if (tick_time->tm_min>15) {
-              snprintf(line2, 20, " dieci- ");
-              snprintf(line3, 20, " y %s ", int2stringEsp(tick_time->tm_min, num, 1));
-            }; break;
-    
+    case 1: if (tick_time->tm_min>15) {
+              snprintf(line2, 20, " y dieci- ");
+              snprintf(line3, 20, " %s ", int2stringEsp(tick_time->tm_min, num, 1));
+            } 
+            else snprintf(line2, 20, " y %s ", int2stringEsp(tick_time->tm_min, num, 1));
+            break; 
     case 2: if  (tick_time->tm_min == 20 ) snprintf(line2, 20, " %s ", int2stringEsp(20, num, 1)); 
             else snprintf(line2, 20, " %s ", int2stringEsp(20, num, 2));break;
     case 3: snprintf(line2, 20, " %s ", int2stringEsp(30, num, 1)); break;
@@ -62,7 +62,7 @@ void date2textEsp(struct tm *tick_time, char *line1, char* line2, char *line3, c
   if (((tick_time->tm_min)/10)>1){
     switch ((tick_time->tm_min)%10) {
       case 0: snprintf(line3, 20, " " ); break; 
-      default: snprintf(line3, 20, " %s ", int2stringEsp(tick_time->tm_min%10, num, 1)); break;
+      default: snprintf(line3, 20, " y %s ", int2stringEsp(tick_time->tm_min%10, num, 1)); break;
     }
   } 
       
