@@ -22,28 +22,26 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/CoolTextScreenshoot",
-                    "name": "IMAGE_SCREENSHOOT",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/Bluetooth",
-                    "name": "IMAGE_NET",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/CoolTextLogo",
+                    "file": "images/TypeWriterLogo",
                     "menuIcon": true,
                     "name": "IMAGE_LOGO",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "chalk"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/TypeWriterScreenshoot",
+                    "name": "IMAGE_SCREENSHOOT",
+                    "targetPlatforms": [
+                        "chalk"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "characterRegex": "[\\-a-zA-Z0-9'?\\,]",
                     "file": "fonts/SpecialElite.ttf",
-                    "name": "FONT_TW_15",
+                    "name": "FONT_TW_25",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -57,7 +55,7 @@
                 {
                     "characterRegex": "[\\-a-zA-Z0-9'?\\,]",
                     "file": "fonts/SpecialElite.ttf",
-                    "name": "FONT_TW_27",
+                    "name": "FONT_TW_15",
                     "targetPlatforms": null,
                     "type": "font"
                 }

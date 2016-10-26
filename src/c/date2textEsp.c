@@ -62,7 +62,9 @@ void date2textEsp(struct tm *tick_time, char *line1, char* line2, char *line3, c
   if (((tick_time->tm_min)/10)>1){
     switch ((tick_time->tm_min)%10) {
       case 0: snprintf(line3, 20, " " ); break; 
-      default: snprintf(line3, 20, " y %s ", int2stringEsp(tick_time->tm_min%10, num, 1)); break;
+      default: if (tick_time->tm_min/10 == 2) snprintf(line3, 20, " %s ", int2stringEsp(tick_time->tm_min%10, num, 1));
+              else snprintf(line3, 20, " y %s ", int2stringEsp(tick_time->tm_min%10, num, 1)); 
+              break;
     }
   } 
       

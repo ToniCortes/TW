@@ -26,40 +26,50 @@ char *int2stringCat(int h, char* tmp_num, int opcio){
     case 17: strncpy(tmp_num, "disset", 20); break;
     case 18: strncpy(tmp_num, "divuit", 20); break;
     case 19: strncpy(tmp_num, "dinou", 20); break;
-    case 20: if (opcio == 1) strncpy(tmp_num, "vint", 20); else strncpy(tmp_num, "vint-i-", 20); break;
-    case 30: strncpy(tmp_num, "trenta-", 20); break;
-    case 40: strncpy(tmp_num, "quaranta-", 20); break;
-    case 50: strncpy(tmp_num, "cinquanta-", 20); break;
+    case 20: if (opcio == 1) strncpy(tmp_num, "vint", 20); else strncpy(tmp_num, "vint-i", 20); break;
+    case 30: strncpy(tmp_num, "trenta", 20); break;
+    case 40: strncpy(tmp_num, "quaranta", 20); break;
+    case 50: strncpy(tmp_num, "cinquanta", 20); break;
 
 
   }
   return (tmp_num);
 }
 
-void date2textCat(struct tm *tick_time, char *line1, char* line2, char *line3, char *day, bool ShowDate){
+void date2textCat(struct tm *tick_time, char *line1, char* line2, char *line3, char *line4, char *day, bool ShowDate){
  
   snprintf(line1, 20, " %s ", int2stringCat(tick_time->tm_hour%12, num, 2));
-  snprintf(line3, 20, " ");
+  if (tick_time->tm_min == 0) snprintf(line2, 20, " "); else snprintf(line2, 20, " i ");
+  if (tick_time->tm_min > 30){
+    snprintf(line2, 20, " menys ");
+    tick_time->tm_min = 60 - tick_time->tm_min;
+  }
+  snprintf(line4, 20, " ");
   
   switch ((tick_time->tm_min)/10) {
     case 0: 
       switch ((tick_time->tm_min)%10) {
-        case 0: snprintf(line2, 20, " en punt "); break;
-        default: snprintf(line2, 20, " i %s ", int2stringCat(tick_time->tm_min, num, 1)); break;
+        case 0:snprintf(line2, 20, " en "); 
+               snprintf(line3, 20, " punt "); 
+               break;
+        default: snprintf(line3, 20, " %s ", int2stringCat(tick_time->tm_min, num, 1)); break;
        }break;
-    case 1: snprintf(line2, 20, " i %s ", int2stringCat(tick_time->tm_min, num, 1)); break;
+    case 1: snprintf(line3, 20, " %s ", int2stringCat(tick_time->tm_min, num, 1)); break;
     
-    case 2: if  (tick_time->tm_min == 20 ) snprintf(line2, 20, " %s ", int2stringCat(20, num, 1)); 
-            else snprintf(line2, 20, " %s ", int2stringCat(20, num, 2));break;
-    case 3: snprintf(line2, 20, " %s ", int2stringCat(30, num, 1)); break;
-    case 4: snprintf(line2, 20, " %s ", int2stringCat(40, num, 1)); break;
-    case 5: snprintf(line2, 20, " %s ", int2stringCat(50, num, 1)); break;
+    case 2: if  (tick_time->tm_min == 20 ) snprintf(line3, 20, " %s ", int2stringCat(20, num, 1)); 
+            else snprintf(line3, 20, " %s- ", int2stringCat(20, num, 2));break;
+    case 3: if (tick_time->tm_min == 30) snprintf(line3, 20, " %s ", int2stringCat(30, num, 1)); 
+            else snprintf(line3, 20, " %s- ", int2stringCat(30, num, 1));break;
+    case 4: if (tick_time->tm_min == 40) snprintf(line3, 20, " %s ", int2stringCat(40, num, 1)); 
+            else snprintf(line3, 20, " %s- ", int2stringCat(40, num, 1));break;
+    case 5: if (tick_time->tm_min == 50) snprintf(line3, 20, " %s ", int2stringCat(50, num, 1)); 
+            else snprintf(line3, 20, " %s- ", int2stringCat(50, num, 1));break;
   }
     
   if (((tick_time->tm_min)/10)>1){
     switch ((tick_time->tm_min)%10) {
-      case 0: snprintf(line3, 20, " " ); break; 
-      default: snprintf(line3, 20, " %s ", int2stringCat(tick_time->tm_min%10, num, 1)); break;
+      case 0: snprintf(line4, 20, " " ); break; 
+      default: snprintf(line4, 20, " %s ", int2stringCat(tick_time->tm_min%10, num, 1)); break;
     }
   } 
       
@@ -67,18 +77,20 @@ void date2textCat(struct tm *tick_time, char *line1, char* line2, char *line3, c
        snprintf(line1, 20, " %s ", int2stringCat(tick_time->tm_hour%12, num, 2));
        snprintf(line2, 20, " i " );
        snprintf(line3, 20, " quart " );
+       snprintf(line4, 20, " ");
   }
   
   if (tick_time->tm_min == 30){
        snprintf(line1, 20, " %s ", int2stringCat(tick_time->tm_hour%12, num, 2));
        snprintf(line2, 20, " i " );
        snprintf(line3, 20, " mitja " );
-
+       snprintf(line4, 20, " ");
   }
   if (tick_time->tm_min == 45){
        snprintf(line1, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
        snprintf(line2, 20, " menys " );
        snprintf(line3, 20, " quart " );
+       snprintf(line4, 20, " ");
  }
   
     
@@ -98,10 +110,11 @@ void date2textCat(struct tm *tick_time, char *line1, char* line2, char *line3, c
   }
 }
 
-void noBTtextCat(char *line1, char* line2, char *line3){
-  strncpy(line1, "Aiiix, i ", sizeof(" Aiiix, i "));
-  strncpy(line2, " el teu ", sizeof(" el teu "));
-  strncpy(line3, " iPhone? ", sizeof(" iPhone? "));
+void noBTtextCat(char *line1, char* line2, char *line3, char * line4){
+  strncpy(line1, " Aiiix, on ", sizeof(" Aiiix, on "));
+  strncpy(line2, " tens ", sizeof(" tens "));
+  strncpy(line3, " el teu ", sizeof(" el teu "));
+  strncpy(line4, " iPhone? ", sizeof(" iPhone? "));
 }
 
 
