@@ -107,7 +107,6 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
 
   char num[20];
 
-
   snprintf(line4, 20, " ");
   
   switch (tick_time->tm_min) {
@@ -123,6 +122,7 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 6:
     case 7: snprintf(line1, 20, " %s ", int2stringCat(tick_time->tm_hour%12, num, 2));
             snprintf(line2, 20, " tocades ");
+            snprintf(line3, 20, " ");
             break; 
     case 8:
     case 9:
@@ -132,8 +132,14 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 13:
     case 14:snprintf(line1, 20, " mig ");
             snprintf(line2, 20, " quart ");
-            snprintf(line3, 20, " de ");
-            snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            if ((((tick_time->tm_hour%12)+1) == 1) || (((tick_time->tm_hour%12)+1) == 11)) {
+              snprintf(line3, 20, " d'%s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+              snprintf(line4, 20, " ");
+            } 
+            else {
+              snprintf(line3, 20, " de ");
+              snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            };
             break;
     case 15:
     case 16:
@@ -144,8 +150,14 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 21:
     case 22:snprintf(line1, 20, " un ");
             snprintf(line2, 20, " quart ");
-            snprintf(line3, 20, " de ");
-            snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            if ((((tick_time->tm_hour%12)+1) == 1) || (((tick_time->tm_hour%12)+1) == 11)) {
+              snprintf(line3, 20, " d'%s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+              snprintf(line4, 20, " ");
+            } 
+            else {
+              snprintf(line3, 20, " de ");
+              snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            };
             break;
     case 23:
     case 24:
@@ -155,8 +167,14 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 28:
     case 29:snprintf(line1, 20, " un ");
             snprintf(line2, 20, " quart ");
-            snprintf(line3, 20, " i mig de ");
-            snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            if ((((tick_time->tm_hour%12)+1) == 1) || (((tick_time->tm_hour%12)+1) == 11)) {
+              snprintf(line3, 20, " i mig");
+              snprintf(line4, 20, " d'%s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            } 
+            else {
+              snprintf(line3, 20, " i mig de ");
+              snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            };
             break;
     case 30:
     case 31:
@@ -167,8 +185,14 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 36:
     case 37:snprintf(line1, 20, " dos ");
             snprintf(line2, 20, " quarts ");
-            snprintf(line3, 20, " de ");
-            snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            if ((((tick_time->tm_hour%12)+1) == 1) || (((tick_time->tm_hour%12)+1) == 11)) {
+              snprintf(line3, 20, " d'%s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+              snprintf(line4, 20, " ");
+            } 
+            else {
+              snprintf(line3, 20, " de ");
+              snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            };
             break;
     case 38:
     case 39:
@@ -178,8 +202,14 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 43:
     case 44:snprintf(line1, 20, " dos ");
             snprintf(line2, 20, " quarts ");
-            snprintf(line3, 20, " i mig de ");
-            snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            if ((((tick_time->tm_hour%12)+1) == 1) || (((tick_time->tm_hour%12)+1) == 11)) {
+              snprintf(line3, 20, " i mig");
+              snprintf(line4, 20, " d'%s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            } 
+            else {
+              snprintf(line3, 20, " i mig de ");
+              snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            };
             break;
     case 45:
     case 46:
@@ -190,8 +220,14 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 51:
     case 52:snprintf(line1, 20, " tres ");
             snprintf(line2, 20, " quarts ");
-            snprintf(line3, 20, " de ");
-            snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            if ((((tick_time->tm_hour%12)+1) == 1) || (((tick_time->tm_hour%12)+1) == 11)) {
+              snprintf(line3, 20, " d'%s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+              snprintf(line4, 20, " ");
+            } 
+            else {
+              snprintf(line3, 20, " de ");
+              snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            };
             break;
     case 53:
     case 54:
@@ -201,8 +237,14 @@ void date2textTCat(struct tm *tick_time, char *line1, char* line2, char *line3, 
     case 58:
     case 59:snprintf(line1, 20, " tres ");
             snprintf(line2, 20, " quarts ");
-            snprintf(line3, 20, " i mig de ");
-            snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            if ((((tick_time->tm_hour%12)+1) == 1) || (((tick_time->tm_hour%12)+1) == 11)) {
+              snprintf(line3, 20, " i mig");
+              snprintf(line4, 20, " d'%s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            } 
+            else {
+              snprintf(line3, 20, " i mig de ");
+              snprintf(line4, 20, " %s ", int2stringCat((tick_time->tm_hour%12)+1, num, 2));
+            };
             break;
   }
   
