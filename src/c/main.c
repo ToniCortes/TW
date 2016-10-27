@@ -47,21 +47,21 @@ GTextAlignment RandomPlacement(){
 
 void date2text(struct tm *tick_time, char *line1, char* line2, char *line3, char *line4, char *day, bool ShowDate)
 {
-  APP_LOG(0, "date2text %c %d\n", Param.Language, Param.Language);
   switch (Param.Language) {
     case 'C': date2textCat(tick_time, line1, line2, line3, line4, day, ShowDate); break;
-    case 'S': date2textEsp(tick_time, line1, line2, line3, day, ShowDate); break;
-    case 'E': date2textEng(tick_time, line1, line2, line3, day, ShowDate); break;
+    case 'T': date2textTCat(tick_time, line1, line2, line3, line4, day, ShowDate); break;
+    case 'S': date2textEsp(tick_time, line1, line2, line3, line4, day, ShowDate); break;
+    case 'E': date2textEng(tick_time, line1, line2, line3, line4, day, ShowDate); break;
   }
 }
 
 void noBTtext(char *line1, char* line2, char *line3, char *line4)
 {
-  APP_LOG(0, "noBTtext %c %d\n", Param.Language, Param.Language);
   switch (Param.Language) {
     case 'C': noBTtextCat(line1, line2, line3, line4); break;
-    case 'S': noBTtextEsp(line1, line2, line3); break;
-    case 'E': noBTtextEng(line1, line2, line3); break;
+    case 'T': noBTtextCat(line1, line2, line3, line4); break;
+    case 'S': noBTtextEsp(line1, line2, line3, line4); break;
+    case 'E': noBTtextEng(line1, line2, line3, line4); break;
   }
 }
 
@@ -90,7 +90,6 @@ static void prv_inbox_received_handler(DictionaryIterator *iter, void *context) 
   Tuple *Language_t = dict_find(iter, MESSAGE_KEY_Language);
   if(Language_t) {
       Param.Language = (char) Language_t->value->int32;
-      APP_LOG(0, "prv_inbox_received_handler %c %d\n", Param.Language, Param.Language);
         
       struct tm *t;
       time_t temp;

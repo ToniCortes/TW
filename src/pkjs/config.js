@@ -37,6 +37,10 @@ module.exports = [
             "value": "C"
           },
           { 
+            "label": "Català en quarts",
+            "value": "T"
+          },
+          { 
             "label": "Español",
             "value": "S"
           },

@@ -2,8 +2,6 @@
 #include "date2textEng.h"
 
 
-char num[20];
-
 char *int2stringEng(int h, char* tmp_num){
   switch (h) {
     case 0: strncpy(tmp_num, "twelve", 20); break;
@@ -36,8 +34,10 @@ char *int2stringEng(int h, char* tmp_num){
   return (tmp_num);
 }
 
-void date2textEng(struct tm *tick_time, char *line1, char* line2, char *line3, char *day, bool ShowDate){
+void date2textEng(struct tm *tick_time, char *line1, char* line2, char *line3, char *line4, char *day, bool ShowDate){
  
+  char num[20];
+
   snprintf(line1, 20, " %s ", int2stringEng(tick_time->tm_hour%12, num));
   snprintf(line3, 20, " ");
   
@@ -97,8 +97,9 @@ void date2textEng(struct tm *tick_time, char *line1, char* line2, char *line3, c
   }
 }
 
-void noBTtextEng(char *line1, char* line2, char *line3){
+void noBTtextEng(char *line1, char* line2, char *line3, char *line4){
   strncpy(line1, "Uops,  ", sizeof(" Uops, "));
-  strncpy(line2, " and your ", sizeof(" and your "));
-  strncpy(line3, " iPhone? ", sizeof(" iPhone? "));
+  strncpy(line2, " and ", sizeof(" and "));
+  strncpy(line3, " your ", sizeof(" your "));
+  strncpy(line4, " iPhone? ", sizeof(" iPhone? "));
 }
